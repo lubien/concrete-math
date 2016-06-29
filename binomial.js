@@ -12,11 +12,11 @@ let combination = (n, p) =>
 	fact(n) / (fact(p) * fact(n - p));
 
 // Gera uma lista de `n` elementos começando por 0
-let range = (n) =>
+let range = n =>
 	Array.from(Array(n + 1), (_, i) => i);
 
 // Dado um espaço amostral e uma probabilidade de eventos favoráveis,
-// retorna uma função P(x) onde `x` é o número de sucessos desejados. 
+// retorna uma função P(x) onde `x` é o número de sucessos desejados.
 function binomial(space, p) {
 	return x => combination(space, x) * pow(p, x) * pow(1 - p, space - x);
 }
@@ -37,15 +37,15 @@ function poisson(space, p) {
 }
 
 // Em uma rodovia, toda semana acontecem 5 desastres.
-const P = poisson(7, 5 / 7);
+const p = poisson(7, 5 / 7);
 
 // Primeira questão:
-// Qual a probabilidade de acontecerem entre segunda e sábado? 
+// Qual a probabilidade de acontecerem entre segunda e sábado?
 // Nota: dado que a contagem começa do 0, supõe-se 0 como domingo.
-console.log(P(x => x >= 1 && x <= 6));
+console.log(p(x => x >= 1 && x <= 6));
 // =~ 90.49%
 
 // Segunda questão:
 // Qual a probabilidade de acontecerem nos primeiros 4 dias
-console.log(P(x => x <= 3));
+console.log(p(x => x <= 3));
 // =~ 10.82%
