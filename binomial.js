@@ -16,7 +16,7 @@ let range = (n) =>
 	Array.from(Array(n + 1), (_, i) => i);
 
 // Dado um espaço amostral e uma probabilidade de eventos favoráveis,
-// returna uma função P(x) onde `x` é o número de sucessos desejados. 
+// retorna uma função P(x) onde `x` é o número de sucessos desejados. 
 function binomial(space, p) {
 	return x => combination(space, x) * pow(p, x) * pow(1 - p, space - x);
 }
@@ -36,15 +36,16 @@ function poisson(space, p) {
 			.reduce((acc, x) => acc + x);
 }
 
-// Em uma rodovia, toda semana há 5 desastres.
+// Em uma rodovia, toda semana acontecem 5 desastres.
+const P = poisson(7, 5 / 7);
 
 // Primeira questão:
 // Qual a probabilidade de acontecerem entre segunda e sábado? 
-// Nota: dado que a contagem começa do 0 supõe-se 0 como domingo.
-console.log(poisson(7, 5 / 7)(x => x >= 1 && x <= 6));
+// Nota: dado que a contagem começa do 0, supõe-se 0 como domingo.
+console.log(P(x => x >= 1 && x <= 6));
 // =~ 90.49%
 
 // Segunda questão:
 // Qual a probabilidade de acontecerem nos primeiros 4 dias
-console.log(poisson(7, 5 / 7)(x => x <= 3));
+console.log(P(x => x <= 3));
 // =~ 10.82%
