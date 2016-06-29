@@ -36,7 +36,7 @@ function poisson(space, p) {
 			.reduce((acc, x) => acc + x);
 }
 
-// Em uma rodovia, todo semana há 5 desastres.
+// Em uma rodovia, toda semana há 5 desastres.
 
 // Primeira questão:
 // Qual a probabilidade de acontecerem entre segunda e sábado? 
